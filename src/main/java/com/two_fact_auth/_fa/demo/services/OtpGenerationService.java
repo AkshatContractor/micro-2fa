@@ -17,6 +17,9 @@ import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class OtpGenerationService {
 
@@ -31,6 +34,8 @@ public class OtpGenerationService {
 
     private static final long OTP_EXPIRE_TIME = 120; //seconds
 
+    private static final Logger logger = LoggerFactory.getLogger(OtpGenerationService.class);
+
     public OtpResponseDto generateOtp(OtpRequestDto otpRequestDto) throws MessagingException {
         String email = otpRequestDto.getEmail();
         String otp = String.format("%06d", new Random().nextInt(999999));
@@ -43,6 +48,7 @@ public class OtpGenerationService {
         redisTemplate.opsForValue().set(email, otpDetails, OTP_EXPIRE_TIME, TimeUnit.SECONDS);
 
         //send email
+        logger.info("Email sent to email {}", email);
         emailOtpService.sendEmailOtp(email, otp);
 
         OtpResponseDto otpResponseDto = new OtpResponseDto();
