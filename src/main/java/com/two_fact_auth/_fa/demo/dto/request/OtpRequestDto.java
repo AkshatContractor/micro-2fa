@@ -1,4 +1,4 @@
-package dto.request;
+package com.two_fact_auth._fa.demo.dto.request;
 
 public class OtpRequestDto {
 

@@ -1,21 +1,16 @@
 package com.two_fact_auth._fa.demo.controllers;
 
-import com.two_fact_auth._fa.demo.models.OtpDetails;
 import com.two_fact_auth._fa.demo.services.OtpGenerationService;
-import dto.request.OtpRequestDto;
-import dto.response.OtpResponseDto;
+import com.two_fact_auth._fa.demo.dto.request.OtpRequestDto;
+import com.two_fact_auth._fa.demo.dto.response.OtpResponseDto;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
-import java.util.*;
 
 @RestController
 @RequestMapping("/api/otp")
@@ -33,6 +28,7 @@ public class OtpController {
         @PostMapping("/verify-otp")
         public ResponseEntity<OtpResponseDto> verifyOtp(@RequestBody OtpRequestDto otpRequestDto) {
             OtpResponseDto response = service.verifyOtp(otpRequestDto);
+            System.out.println("lkjdfouipkljophophdfgdfg " + response);
             HttpStatus status;
             switch(response.getOtpResponseEnum()) {
                 case SUCCESS -> status = HttpStatus.OK;

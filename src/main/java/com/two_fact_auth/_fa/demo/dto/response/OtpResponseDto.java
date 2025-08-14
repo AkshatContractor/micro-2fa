@@ -1,4 +1,4 @@
-package dto.response;
+package com.two_fact_auth._fa.demo.dto.response;
 
 import com.two_fact_auth._fa.demo.enums.OtpResponseEnum;
 

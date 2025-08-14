@@ -4,15 +4,14 @@ package com.two_fact_auth._fa.demo.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.two_fact_auth._fa.demo.enums.OtpResponseEnum;
 import com.two_fact_auth._fa.demo.models.OtpDetails;
-import dto.request.OtpRequestDto;
-import dto.response.OtpResponseDto;
+import com.two_fact_auth._fa.demo.dto.request.OtpRequestDto;
+import com.two_fact_auth._fa.demo.dto.response.OtpResponseDto;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
