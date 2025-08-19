@@ -29,7 +29,7 @@ public class OtpGenerationService {
     private ObjectMapper mapper;
 
     @Autowired
-    private EmailOtpService emailOtpService;
+    private EmailService emailService;
 
     private static final long OTP_EXPIRE_TIME = 120; //seconds
 
@@ -48,7 +48,7 @@ public class OtpGenerationService {
 
         //send email
         logger.info("Email sent to email {}", email);
-        emailOtpService.sendEmailOtp(email, otp);
+        emailService.sendEmailOtp(email, otp);
 
         OtpResponseDto otpResponseDto = new OtpResponseDto();
         otpResponseDto.setOtp_response("Otp Sent To email");
